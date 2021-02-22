@@ -1,0 +1,1 @@
+create table employee(eid int(10) primary key auto_increment,ename varchar(30),eemail varchar(30),epassword varchar(255),eage int(10),ehobbies varchar(255));
