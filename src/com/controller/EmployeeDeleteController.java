@@ -6,14 +6,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bean.EmployeeBean;
 import com.dao.EmployeeDao;
 import com.service.EmployeeService;
 
 /**
- * Servlet implementation class EmployeeRegistrationController
+ * Servlet implementation class EmployeeDeleteController
  */
-public class EmployeeRegistrationController extends HttpServlet {
+public class EmployeeDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,27 +23,14 @@ public class EmployeeRegistrationController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String empid = request.getParameter("eid");
+		int eId = 0;
+		if (!empid.equals(null) || !empid.equals("")) {
 
-		String eName = request.getParameter("txtEmployeeName");
-		String ePassword = request.getParameter("pwdEmployeePassword");
-		String eEmail = request.getParameter("txtEmployeeEmail");
-		String age = request.getParameter("txtEmployeeAge");
-		int eAge = 0;
-		if (!age.equals("") || !age.equals(null)) {
-
-			eAge = Integer.parseInt(age);
+			eId = Integer.parseInt(empid);
 		}
-
-		EmployeeBean employeeBean = new EmployeeBean();
-
-		employeeBean.seteName(eName);
-		employeeBean.seteEmail(eEmail);
-		employeeBean.setePassword(ePassword);
-		employeeBean.setEage(eAge);
-
 		EmployeeService employeeService = new EmployeeDao();
-
-		if (employeeService.addEmployee(employeeBean)) {
+		if (employeeService.deleteEmployee(eId)) {
 
 			response.sendRedirect("EmployeeListController");
 		} else {
@@ -61,7 +47,6 @@ public class EmployeeRegistrationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		doGet(request, response);
 	}
 

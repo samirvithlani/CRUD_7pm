@@ -10,7 +10,7 @@ public interface EmployeeService {
 
 	public List<EmployeeBean> getAllEmployees();
 
-	public int deleteEmployee(int eId);
+	public boolean deleteEmployee(int eId);
 	
 	
 	

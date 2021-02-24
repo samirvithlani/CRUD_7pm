@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +13,9 @@ import com.dao.EmployeeDao;
 import com.service.EmployeeService;
 
 /**
- * Servlet implementation class EmployeeRegistrationController
+ * Servlet implementation class EmployeeListController
  */
-public class EmployeeRegistrationController extends HttpServlet {
+public class EmployeeListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,33 +26,11 @@ public class EmployeeRegistrationController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		String eName = request.getParameter("txtEmployeeName");
-		String ePassword = request.getParameter("pwdEmployeePassword");
-		String eEmail = request.getParameter("txtEmployeeEmail");
-		String age = request.getParameter("txtEmployeeAge");
-		int eAge = 0;
-		if (!age.equals("") || !age.equals(null)) {
-
-			eAge = Integer.parseInt(age);
-		}
-
-		EmployeeBean employeeBean = new EmployeeBean();
-
-		employeeBean.seteName(eName);
-		employeeBean.seteEmail(eEmail);
-		employeeBean.setePassword(ePassword);
-		employeeBean.setEage(eAge);
-
 		EmployeeService employeeService = new EmployeeDao();
+		List<EmployeeBean> employees = employeeService.getAllEmployees();
 
-		if (employeeService.addEmployee(employeeBean)) {
-
-			response.sendRedirect("EmployeeListController");
-		} else {
-
-			response.sendRedirect("EmployeeListController");
-		}
+		request.setAttribute("employees", employees);
+		request.getRequestDispatcher("employeeList.jsp").forward(request, response);
 
 	}
 
@@ -61,7 +41,6 @@ public class EmployeeRegistrationController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		doGet(request, response);
 	}
 
