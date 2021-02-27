@@ -11,8 +11,9 @@ public interface EmployeeService {
 	public List<EmployeeBean> getAllEmployees();
 
 	public boolean deleteEmployee(int eId);
-	
-	
-	
-	
+
+	public EmployeeBean getEmployeeById(int eId);
+
+	public boolean updateEmployee(EmployeeBean employeeBean);
+
 }

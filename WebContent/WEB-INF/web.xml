@@ -39,4 +39,24 @@
     <servlet-name>EmployeeDeleteController</servlet-name>
     <url-pattern>/EmployeeDeleteController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeEditController</display-name>
+    <servlet-name>EmployeeEditController</servlet-name>
+    <servlet-class>com.controller.EmployeeEditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeEditController</servlet-name>
+    <url-pattern>/EmployeeEditController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeUpdateController</display-name>
+    <servlet-name>EmployeeUpdateController</servlet-name>
+    <servlet-class>com.controller.EmployeeUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeUpdateController</servlet-name>
+    <url-pattern>/EmployeeUpdateController</url-pattern>
+  </servlet-mapping>
 </web-app>

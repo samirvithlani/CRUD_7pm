@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table border="2px" align="center" bgcolor="yellow">
 		<tr>
 			<th>EMPLOYEE ID</th>
 			<th>EMPLOYEE NAME</th>
@@ -34,7 +34,10 @@
 			<td><%=employeeBean.geteEmail()%></td>
 			<td><%=employeeBean.getePassword()%></td>
 			<td><%=employeeBean.getEage()%></td>
-			<td><a href="EmployeeDeleteController?eid=<%=employeeBean.geteId()%>">DELETE</a></td>
+			<td><a
+				href="EmployeeDeleteController?eid=<%=employeeBean.geteId()%>">DELETE</a></td>
+			<td><a
+				href="EmployeeEditController?eid=<%=employeeBean.geteId()%>">UPDATE</a></td>
 		</tr>
 
 
